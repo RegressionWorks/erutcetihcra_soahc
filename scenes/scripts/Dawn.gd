@@ -7,7 +7,7 @@ var anim_state
 var walk_speed := 30.0
 var run_speed := 40.0
 var push_speed := 20.0
-var gravity := 25.0
+var gravity := 80.0
 var is_pushing : bool = false
 var on_stairs : bool = false
 var stairs_in_front : bool = false
@@ -56,14 +56,10 @@ func get_input():
 	if Input.is_action_pressed("run"):
 		if !on_stairs:
 			motion = motion.normalized() * run_speed
-	
-	
-	
-
 
 func gravity():
 	if (on_stairs):
-		motion.y=gravity/10.0
+		motion.y = gravity/80.0
 	else:
 		motion.y = gravity
 
@@ -87,25 +83,22 @@ func manage_stairs():
 	on_stairs = $Sprite/StairRayDown.is_colliding()	
 	#$Sprite/StairRayDown.get_collider()
 	stairs_in_front = $Sprite/StairRayFront.is_colliding()
+	var stairs_up = $Sprite/StairRayUp.is_colliding()
 	
-	var collide_stair = true
+	#print("down " + String(on_stairs))
+	#print("up " + String(stairs_up))
 	
+	var want_collide_stair = true
 	
-	if (!on_stairs):
-		if stairs_in_front && !want_to_go_on_stairs:
-			collide_stair = false 
-	
-	
+	if (!want_to_go_on_stairs):
+		if(!on_stairs || stairs_up):
+			want_collide_stair=false
+		
+		if (!on_stairs && stairs_in_front):
+			want_collide_stair = false 
+	else:
+		want_collide_stair = true
 
-#	if (on_stairs && !is_on_floor()):
-#		collide_stair=true
-#
-#	if (want_to_go_on_stairs):
-#		collide_stair = true
-#
-#	if (on_stairs && last):
-#		collide_stair = true
-#
-	print(collide_stair)
-	set_collision_mask_bit(3, collide_stair)
+	#print(want_collide_stair)
+	set_collision_mask_bit(3, want_collide_stair)
 
