@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tears_and_Fears.ogg-4b5c51aaed642cb6cbfcdceeaf7a3b30.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/Tears_and_Fears.ogg"
+dest_files=[ "res://.import/Tears_and_Fears.ogg-4b5c51aaed642cb6cbfcdceeaf7a3b30.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

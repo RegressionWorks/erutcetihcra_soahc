@@ -1,0 +1,5 @@
+-Create a robust system to change rooms while starting at the right position
+-Make the player able to push and pull objects
+-Make the player able to climb high enough gaps and drop from edges
+-Add stamina and "hide breath" mechanic
+-Redo the tiles for the foreground and background
