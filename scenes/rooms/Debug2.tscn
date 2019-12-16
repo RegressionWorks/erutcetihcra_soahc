@@ -1,216 +1,18 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://scenes/SceneChanger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/FloorTiles.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/objects/FrontDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objects/SideDoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/gfx/props/Stairs.png" type="Texture" id=7]
-[ext_resource path="res://scenes/StairTiles.tres" type="TileSet" id=8]
-[ext_resource path="res://scenes/scripts/StairsLeft.gd" type="Script" id=9]
-[ext_resource path="res://scenes/scripts/StairsRight.gd" type="Script" id=10]
-[ext_resource path="res://scenes/objects/Clock.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/gfx/props/Stand.png" type="Texture" id=12]
-[ext_resource path="res://assets/gfx/props/Plant1.png" type="Texture" id=13]
-[ext_resource path="res://assets/gfx/props/CeramicalBottle.png" type="Texture" id=14]
-[ext_resource path="res://assets/gfx/props/Painting.png" type="Texture" id=15]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( -8, 8, -8, -8, -8, -8, 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( -8, -8, 8, 8, -8, 8, -8, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( -8, -8, 8, 8, -8, 8 )
-
-[sub_resource type="TileSet" id=6]
-0/name = "Sprite"
-0/texture = ExtResource( 7 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 32, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 8, 8 )
-0/navigation_offset = Vector2( 8, 8 )
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-} ]
-0/z_index = 0
-1/name = "Sprite2"
-1/texture = ExtResource( 7 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 48, 16, 16 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 8, 8 )
-1/navigation_offset = Vector2( 8, 8 )
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-} ]
-1/z_index = 0
-2/name = "Sprite3"
-2/texture = ExtResource( 7 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 64, 16, 16 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 8, 8 )
-2/navigation_offset = Vector2( 8, 8 )
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-} ]
-2/z_index = 0
-3/name = "Sprite4"
-3/texture = ExtResource( 7 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 16, 48, 16, 16 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 8, 8 )
-3/navigation_offset = Vector2( 8, 8 )
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-} ]
-3/z_index = 0
-4/name = "Sprite5"
-4/texture = ExtResource( 7 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 32, 64, 16, 16 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 8, 8 )
-4/navigation_offset = Vector2( 8, 8 )
-4/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-} ]
-4/z_index = 0
-5/name = "Sprite6"
-5/texture = ExtResource( 7 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 48, 0, 16, 16 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 8, 8 )
-5/navigation_offset = Vector2( 8, 8 )
-5/shapes = [  ]
-5/z_index = 1
-6/name = "Sprite7"
-6/texture = ExtResource( 7 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 48, 16, 16, 16 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 8, 8 )
-6/navigation_offset = Vector2( 8, 8 )
-6/shapes = [  ]
-6/z_index = 1
-7/name = "Sprite8"
-7/texture = ExtResource( 7 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 48, 32, 16, 16 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 8, 8 )
-7/navigation_offset = Vector2( 8, 8 )
-7/shapes = [  ]
-7/z_index = 1
-8/name = "Sprite9"
-8/texture = ExtResource( 7 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 64, 16, 16, 16 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 8, 8 )
-8/navigation_offset = Vector2( 8, 8 )
-8/shapes = [  ]
-8/z_index = 1
-9/name = "Sprite10"
-9/texture = ExtResource( 7 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 64, 32, 16, 16 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 8, 8 )
-9/navigation_offset = Vector2( 8, 8 )
-9/shapes = [  ]
-9/z_index = 1
-10/name = "Sprite11"
-10/texture = ExtResource( 7 )
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 64, 48, 16, 16 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 8, 8 )
-10/navigation_offset = Vector2( 8, 8 )
-10/shapes = [  ]
-10/z_index = 1
-11/name = "Sprite12"
-11/texture = ExtResource( 7 )
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 80, 32, 16, 16 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 8, 8 )
-11/navigation_offset = Vector2( 8, 8 )
-11/shapes = [  ]
-11/z_index = 1
-12/name = "Sprite13"
-12/texture = ExtResource( 7 )
-12/tex_offset = Vector2( 0, 0 )
-12/modulate = Color( 1, 1, 1, 1 )
-12/region = Rect2( 80, 48, 16, 16 )
-12/tile_mode = 0
-12/occluder_offset = Vector2( 8, 8 )
-12/navigation_offset = Vector2( 8, 8 )
-12/shapes = [  ]
-12/z_index = 1
-13/name = "Sprite14"
-13/texture = ExtResource( 7 )
-13/tex_offset = Vector2( 0, 0 )
-13/modulate = Color( 1, 1, 1, 1 )
-13/region = Rect2( 80, 64, 16, 16 )
-13/tile_mode = 0
-13/occluder_offset = Vector2( 8, 8 )
-13/navigation_offset = Vector2( 8, 8 )
-13/shapes = [  ]
-13/z_index = 1
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 0.701347, 45.9662 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 0.701, 45.9619 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 0.701, 45.962 )
+[ext_resource path="res://scenes/StairTiles.tres" type="TileSet" id=6]
+[ext_resource path="res://scenes/objects/Clock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/gfx/props/Stand.png" type="Texture" id=8]
+[ext_resource path="res://assets/gfx/props/Plant1.png" type="Texture" id=9]
+[ext_resource path="res://assets/gfx/props/CeramicalBottle.png" type="Texture" id=10]
+[ext_resource path="res://assets/gfx/props/Painting.png" type="Texture" id=11]
+[ext_resource path="res://scenes/objects/Staircase.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=13]
 
 [node name="Debug2" type="Node2D"]
 position = Vector2( 144, -1 )
@@ -236,84 +38,49 @@ scale = Vector2( 1, -1 )
 [node name="Door3" parent="." instance=ExtResource( 5 )]
 position = Vector2( -175, 48 )
 
-[node name="Dawn" parent="." instance=ExtResource( 6 )]
-position = Vector2( 49, 113 )
-
-[node name="Railing" type="TileMap" parent="."]
-visible = false
-tile_set = SubResource( 6 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 393224, 5, 0, 458760, 6, 0, 458761, 11, 0, 524296, 7, 0, 524297, 9, 0, 524298, 11, 0, 589833, 10, 0, 589834, 9, 0, 589835, 11, 0, 655370, 10, 0, 655371, 12, 0, 720907, 13, 0 )
-
 [node name="StairsTiles" type="TileMap" parent="."]
+visible = false
 z_index = -1
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_layer = 8
 format = 1
 tile_data = PoolIntArray( 327671, 3, 0, 393207, 2, 0, 393208, 3, 0, 458744, 2, 0, 458745, 3, 0, 524281, 2, 0, 524282, 3, 0, 589817, 536870915, 0, 524296, 0, 0, 655352, 536870915, 0, 655353, 2, 0, 589832, 1, 0, 589833, 0, 0, 720887, 536870916, 0, 720888, 2, 0, 720889, 2, 0, 655368, 2, 0, 655369, 1, 0, 655370, 0, 0, 786422, 536870915, 0, 786423, 2, 0, 786424, 2, 0, 786425, 2, 0, 720904, 2, 0, 720905, 2, 0, 720906, 1, 0, 720907, 0, 0 )
 
-[node name="StairsAreaLeft1" type="Area2D" parent="."]
-editor/display_folded = true
-script = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairsAreaLeft1"]
-position = Vector2( 160, 156 )
-rotation = -0.777286
-shape = SubResource( 7 )
-
-[node name="StairsAreaLeft2" type="Area2D" parent="."]
-editor/display_folded = true
-script = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairsAreaLeft2"]
-position = Vector2( -112, 90 )
-rotation = -0.785398
-shape = SubResource( 8 )
-
-[node name="StairsAreaRight" type="Area2D" parent="."]
-editor/display_folded = true
-script = ExtResource( 10 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairsAreaRight"]
-position = Vector2( -128, 155 )
-rotation = 0.785398
-shape = SubResource( 9 )
-
-[node name="Clock" parent="." instance=ExtResource( 11 )]
+[node name="Clock" parent="." instance=ExtResource( 7 )]
 position = Vector2( 244, 173 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
 
 [node name="Stand" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 105, 120 )
 z_index = -1
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="Plant1" type="Sprite" parent="Stand"]
 position = Vector2( -2, -13 )
-texture = ExtResource( 13 )
+texture = ExtResource( 9 )
 
 [node name="CeramicalBottle" type="Sprite" parent="Stand"]
 position = Vector2( 4, -15 )
-texture = ExtResource( 14 )
+texture = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 283, 142 )
 z_index = -1
-texture = ExtResource( 15 )
+texture = ExtResource( 11 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 1 )
+
+[node name="Staircase" parent="." instance=ExtResource( 12 )]
+position = Vector2( 127.133, 175.34 )
+
+[node name="Dawn" parent="." instance=ExtResource( 13 )]
+position = Vector2( 60.4475, 113.063 )
 [connection signal="changing_area" from="Door1" to="SceneChanger" method="_on_Door_changing_area"]
 [connection signal="changing_area" from="Door2" to="SceneChanger" method="_on_Door_changing_area"]
 [connection signal="changing_area" from="Door3" to="SceneChanger" method="_on_Door_changing_area"]
-[connection signal="body_entered" from="StairsAreaLeft1" to="StairsAreaLeft1" method="_on_StairsAreaLeft_body_entered"]
-[connection signal="body_exited" from="StairsAreaLeft1" to="StairsAreaLeft1" method="_on_StairsAreaLeft_body_exited"]
-[connection signal="body_entered" from="StairsAreaLeft2" to="StairsAreaLeft2" method="_on_StairsAreaLeft_body_entered"]
-[connection signal="body_exited" from="StairsAreaLeft2" to="StairsAreaLeft2" method="_on_StairsAreaLeft_body_exited"]
-[connection signal="body_entered" from="StairsAreaRight" to="StairsAreaRight" method="_on_StairsAreaRight_body_entered"]
-[connection signal="body_exited" from="StairsAreaRight" to="StairsAreaRight" method="_on_StairsAreaRight_body_exited"]
