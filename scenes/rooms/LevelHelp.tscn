@@ -1,19 +1,18 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://scenes/FloorTiles.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/objects/FrontDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/objects/SideDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/StairTiles.tres" type="TileSet" id=5]
-[ext_resource path="res://scenes/objects/Clock.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/gfx/props/Stand.png" type="Texture" id=7]
-[ext_resource path="res://assets/gfx/props/Plant1.png" type="Texture" id=8]
-[ext_resource path="res://assets/gfx/props/CeramicalBottle.png" type="Texture" id=9]
-[ext_resource path="res://assets/gfx/props/Painting.png" type="Texture" id=10]
-[ext_resource path="res://scenes/objects/Staircase.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/objects/Box.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/objects/items/Key.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/objects/Clock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/gfx/props/Stand.png" type="Texture" id=6]
+[ext_resource path="res://assets/gfx/props/Plant1.png" type="Texture" id=7]
+[ext_resource path="res://assets/gfx/props/CeramicalBottle.png" type="Texture" id=8]
+[ext_resource path="res://assets/gfx/props/Painting.png" type="Texture" id=9]
+[ext_resource path="res://scenes/objects/Staircase.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/objects/Box.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/objects/items/Key.tscn" type="PackedScene" id=13]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 144, -1 )
@@ -37,17 +36,7 @@ scale = Vector2( 1, -1 )
 [node name="Door3" parent="." instance=ExtResource( 4 )]
 position = Vector2( -175, 48 )
 
-[node name="StairsTiles" type="TileMap" parent="."]
-visible = false
-z_index = -1
-tile_set = ExtResource( 5 )
-cell_size = Vector2( 16, 16 )
-collision_use_kinematic = true
-collision_layer = 8
-format = 1
-tile_data = PoolIntArray( 327671, 3, 0, 393207, 2, 0, 393208, 3, 0, 458744, 2, 0, 458745, 3, 0, 524281, 2, 0, 524282, 3, 0, 589817, 536870915, 0, 524296, 0, 0, 655352, 536870915, 0, 655353, 2, 0, 589832, 1, 0, 589833, 0, 0, 720887, 536870916, 0, 720888, 2, 0, 720889, 2, 0, 655368, 2, 0, 655369, 1, 0, 655370, 0, 0, 786422, 536870915, 0, 786423, 2, 0, 786424, 2, 0, 786425, 2, 0, 720904, 2, 0, 720905, 2, 0, 720906, 1, 0, 720907, 0, 0 )
-
-[node name="Clock" parent="." instance=ExtResource( 6 )]
+[node name="Clock" parent="." instance=ExtResource( 5 )]
 position = Vector2( 244, 173 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
@@ -56,40 +45,40 @@ z_index = -1
 editor/display_folded = true
 position = Vector2( 105, 120 )
 z_index = -1
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="Plant1" type="Sprite" parent="Stand"]
 position = Vector2( -2, -13 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CeramicalBottle" type="Sprite" parent="Stand"]
 position = Vector2( 4, -15 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 283, 142 )
 z_index = -1
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 1 )
 
-[node name="Staircase" parent="." instance=ExtResource( 11 )]
+[node name="Staircase" parent="." instance=ExtResource( 10 )]
 position = Vector2( 127.133, 175.34 )
 
-[node name="Staircase2" parent="." instance=ExtResource( 11 )]
+[node name="Staircase2" parent="." instance=ExtResource( 10 )]
 position = Vector2( -143.741, 111.807 )
 
-[node name="Staircase3" parent="." instance=ExtResource( 11 )]
+[node name="Staircase3" parent="." instance=ExtResource( 10 )]
 position = Vector2( -95.8764, 175.34 )
 scale = Vector2( -1, 1 )
 
-[node name="Box" parent="Staircase3" instance=ExtResource( 12 )]
+[node name="Box" parent="Staircase3" instance=ExtResource( 11 )]
 position = Vector2( -193.812, -58.239 )
 
-[node name="Dawn" parent="." instance=ExtResource( 13 )]
+[node name="Dawn" parent="." instance=ExtResource( 12 )]
 position = Vector2( 80.0012, 113.627 )
 
-[node name="Key" parent="." instance=ExtResource( 14 )]
-position = Vector2( 58.6867, 120.247 )
+[node name="Key" parent="." instance=ExtResource( 13 )]
+position = Vector2( 21.9387, 120.058 )

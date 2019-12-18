@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Transition.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AudioStreamSample" id=1]
 
 [node name="GlobalScene" type="Node"]
 script = ExtResource( 1 )
@@ -13,5 +15,10 @@ color = Color( 0.0941176, 0.188235, 0.188235, 1 )
 
 [node name="AnimationPlayer" parent="CanvasLayer/Transition" index="0"]
 autoplay = "trans_out"
+
+[node name="SndClock" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+volume_db = -80.0
+bus = "Sfx"
 
 [editable path="CanvasLayer/Transition"]
