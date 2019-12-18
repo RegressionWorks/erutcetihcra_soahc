@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/scripts/SceneChanger.gd" type="Script" id=1]
+[ext_resource path="res://scenes/scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Transition.tscn" type="PackedScene" id=2]
 
-[node name="SceneChanger" type="Node"]
+[node name="GlobalScene" type="Node"]
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

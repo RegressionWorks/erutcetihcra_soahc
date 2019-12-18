@@ -1,4 +1,5 @@
 extends Node
+class_name RoomLoader
 
 onready var scene_tree := get_tree()
 
