@@ -1,7 +1,15 @@
 extends KinematicBody2D
-class_name Box
+class_name Pushable
 
-var motion : Vector2 = Vector2.ZERO
+var velocity : Vector2 = Vector2.ZERO
+var gravity : float = 80.0
 
-func push(motion: Vector2) -> void:
-	move_and_slide(motion, Vector2())
+func _ready():
+	add_to_group("Pushable")
+
+
+func _physics_process(delta):
+	velocity.y = gravity
+	velocity = move_and_slide(velocity, Vector2())
+	#some friction
+	velocity.x*=0.90

@@ -28,13 +28,12 @@ func enter_door():
 	Global.previous_room = get_parent().get_name()
 
 func _on_FrontDoor_body_entered(body):
-	if body.name == "Dawn":
+	if body is Player:
 		enabled = true
 		$AnimationPlayer.play("open")
 
-
 func _on_FrontDoor_body_exited(body):
-	if body.name == "Dawn":
+	if body is Player:
 		enabled = false
 		$AnimationPlayer.play("close")
 

@@ -2,17 +2,16 @@ extends KinematicBody2D
 class_name Player
 
 
-
 var anim_state
-var walk_speed := 30.0
-var run_speed := 40.0
-var push_speed := 20.0
-var gravity := 80.0
+var walk_speed : float = 30.0
+var run_speed : float = 40.0
+var push_speed : float = 20.0
+var gravity : float = 80.0
 var is_pushing : bool = false
 var on_stairs : bool = false
 var stairs_in_front : bool = false
 var want_to_go_on_stairs : bool = false
-var motion : Vector2 = Vector2.ZERO
+var velocity : Vector2 = Vector2.ZERO
 
 
 func _ready():
@@ -32,54 +31,64 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	get_input()
 	gravity()
+	push_objects(delta)	
 	set_animation()
 	set_sprite_direction()
 	manage_stairs()
-	motion = move_and_slide_with_snap(motion, Vector2.DOWN, Vector2.UP, true, 4, 0.8)
+	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true, 4, 0.8)
 	#motion = move_and_slide(motion,Vector2.UP)
 
 
 func get_input():
-	motion = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_right") && is_on_floor():
-		motion.x = 1
+		velocity.x = 1
 	if Input.is_action_pressed("ui_left") && is_on_floor():
-		motion.x = -1
+		velocity.x = -1
 		
 	want_to_go_on_stairs = Input.is_action_pressed("ui_up") && is_on_floor()
 
 	if (on_stairs && stairs_in_front):
-		motion = motion.normalized() * walk_speed *2.0
+		velocity = velocity.normalized() * walk_speed *2.0
 	else:
-		motion = motion.normalized() * walk_speed
+		velocity = velocity.normalized() * walk_speed
 	
 	if Input.is_action_pressed("run"):
 		if !on_stairs:
-			motion = motion.normalized() * run_speed
-
+			velocity = velocity.normalized() * run_speed
+			
 func gravity():
 	if (on_stairs):
-		motion.y = gravity/80.0
+		velocity.y = gravity/80.0
 	else:
-		motion.y = gravity
+		velocity.y = gravity
+		
+func push_objects(delta):
+	#var collision = move_and_collide(velocity * delta, true, true, true)
+	for i in get_slide_count():
+		var collider : Pushable = get_slide_collision(i).collider as Pushable		
+		if collider != null:
+			collider.velocity += velocity * 0.1
 
 
 func set_animation():
-	if motion.x == 0:
+	if velocity.x == 0:
 		anim_state.travel("idle")
-	elif motion.x < 0 or motion.x > 0:
+	else:
 		anim_state.travel("walk")
 	
 
 func set_sprite_direction():
-	if motion.x <= -1:
+	if velocity.x <= -1:
 		$Sprite.scale.x = -1
-	elif motion.x >= 1:
+	elif velocity.x >= 1:
 		$Sprite.scale.x = 1
 
 
+var last_want_collide_stairs : bool = false
+var colliding_stairs = null
+
 func manage_stairs():
-	var last = on_stairs
 	on_stairs = $Sprite/StairRayDown.is_colliding()	
 	#$Sprite/StairRayDown.get_collider()
 	stairs_in_front = $Sprite/StairRayFront.is_colliding()
@@ -88,17 +97,21 @@ func manage_stairs():
 	#print("down " + String(on_stairs))
 	#print("up " + String(stairs_up))
 	
-	var want_collide_stair = true
+	var want_collide_stairs = true
 	
 	if (!want_to_go_on_stairs):
 		if(!on_stairs || stairs_up):
-			want_collide_stair=false
+			want_collide_stairs=false
 		
 		if (!on_stairs && stairs_in_front):
-			want_collide_stair = false 
+			want_collide_stairs = false 
 	else:
-		want_collide_stair = true
+		want_collide_stairs = true
+		
+	
+		
+	last_want_collide_stairs = want_collide_stairs
 
 	#print(want_collide_stair)
-	set_collision_mask_bit(3, want_collide_stair)
+	set_collision_mask_bit(3, want_collide_stairs)
 

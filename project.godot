@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "Box",
-"language": "GDScript",
-"path": "res://scenes/scripts/Pushable.gd"
-}, {
 "base": "Area2D",
 "class": "Door",
 "language": "GDScript",
@@ -23,11 +18,16 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scenes/scripts/Dawn.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Pushable",
+"language": "GDScript",
+"path": "res://scenes/scripts/Pushable.gd"
 } ]
 _global_script_class_icons={
-"Box": "",
 "Door": "",
-"Player": ""
+"Player": "",
+"Pushable": ""
 }
 
 [application]
