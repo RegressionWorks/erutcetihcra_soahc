@@ -180,13 +180,10 @@ __meta__ = {
 
 [node name="StairRayDown" type="RayCast2D" parent="Sprite"]
 show_behind_parent = true
-position = Vector2( -0.0385208, 14.3974 )
+position = Vector2( 0, 13 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 8
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="StairRayUp" type="RayCast2D" parent="Sprite"]
 show_behind_parent = true

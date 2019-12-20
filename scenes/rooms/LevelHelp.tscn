@@ -10,9 +10,9 @@
 [ext_resource path="res://assets/gfx/props/CeramicalBottle.png" type="Texture" id=8]
 [ext_resource path="res://assets/gfx/props/Painting.png" type="Texture" id=9]
 [ext_resource path="res://scenes/objects/Staircase.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/objects/Box.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/objects/items/Key.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Dawn.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/objects/items/Key.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/objects/Box.tscn" type="PackedScene" id=13]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 144, -1 )
@@ -74,11 +74,13 @@ position = Vector2( -143.741, 111.807 )
 position = Vector2( -95.8764, 175.34 )
 scale = Vector2( -1, 1 )
 
-[node name="Box" parent="Staircase3" instance=ExtResource( 11 )]
-position = Vector2( -193.812, -58.239 )
-
-[node name="Dawn" parent="." instance=ExtResource( 12 )]
+[node name="Dawn" parent="." instance=ExtResource( 11 )]
 position = Vector2( 80.0012, 113.627 )
 
-[node name="Key" parent="." instance=ExtResource( 13 )]
+[node name="Key" parent="." instance=ExtResource( 12 )]
 position = Vector2( 21.9387, 120.058 )
+
+[node name="Box" parent="." instance=ExtResource( 13 )]
+position = Vector2( 56.0811, 117.101 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )

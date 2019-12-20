@@ -77,7 +77,6 @@ region_enabled = true
 region_rect = Rect2( 80, 64, 16, 16 )
 
 [node name="Stairs" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Stairs"]
 position = Vector2( 8, -40 )
@@ -140,4 +139,5 @@ region_enabled = true
 region_rect = Rect2( 32, 64, 16, 16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -4.31191, -46.1736, 2.05225, -47.2674, 63.8048, 15.0817, 68.8763, 16.3744, 60.273, 15.6135, -4.31191, -43.3892 )
+position = Vector2( 0.45372, 0.198887 )
+polygon = PoolVector2Array( -12.8203, -46.9691, 3.58733, -48.5601, 63.8048, 15.0817, 68.8763, 16.3744, 50.2248, 15.5788, -4.31191, -43.3892 )
