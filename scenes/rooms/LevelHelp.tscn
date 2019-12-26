@@ -81,6 +81,7 @@ position = Vector2( 80.0012, 113.627 )
 position = Vector2( 21.9387, 120.058 )
 
 [node name="Box" parent="." instance=ExtResource( 13 )]
-position = Vector2( 56.0811, 117.101 )
+position = Vector2( 62.5065, 116.844 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
+collision_mask = 31

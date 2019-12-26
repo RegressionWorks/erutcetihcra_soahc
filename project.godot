@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/scripts/Dawn.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "RigidBody2D",
 "class": "Pushable",
 "language": "GDScript",
 "path": "res://scenes/scripts/Pushable.gd"

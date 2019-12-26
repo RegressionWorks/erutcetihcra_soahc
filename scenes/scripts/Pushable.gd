@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 class_name Pushable
 
 var velocity : Vector2 = Vector2.ZERO
@@ -14,6 +14,7 @@ func _physics_process(delta):
 #	#some friction
 #	velocity.x*=0.90
 	
-	velocity.y = gravity
-	velocity.x = 0
-	move_and_slide(velocity, Vector2.UP)
+	#velocity.y = gravity
+	#velocity.x = 
+	#move_and_slide(velocity, Vector2.UP)
+	pass
