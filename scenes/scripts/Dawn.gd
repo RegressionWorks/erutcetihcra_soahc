@@ -16,7 +16,8 @@ var velocity : Vector2 = Vector2.ZERO
 
 
 func _ready():
-	show()
+	print("Dawn _ready")
+	#show()
 	anim_state = $AnimationTree.get("parameters/playback")
 	$AnimationTree.active = true
 	Global.Dawn = self
@@ -30,6 +31,7 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	print("Dawn physic process")
 	get_input()
 	gravity()
 	push_objects(delta)	

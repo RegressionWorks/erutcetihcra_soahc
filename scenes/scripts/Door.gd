@@ -1,40 +1,51 @@
+tool
 extends Area2D
 class_name Door
 
+enum EDoorType { Front, Side }
+export (EDoorType) var DoorType = EDoorType.Front setget _set_door_type
 export (String, FILE) var next_room_path := ""
-export (String) var next_room_door_name := ""
+export (NodePath) var connected_door := ""
 
 var opened : bool = false
 
 signal changing_area
-signal area_changed
-
 
 func _ready():
 	add_to_group("Door")
-	Global.Door = self
+	connect("changing_area", get_node("/root/Global"), "_on_changing_area")
+	
+func _set_door_type(value):
+	DoorType = value
+	if DoorType == EDoorType.Front:		
+		$CollisionFront.disabled=false
+		$CollisionSide.disabled=true
+		$AnimPlayer.play("closed")
+	else:
+		$CollisionFront.disabled=true
+		$CollisionSide.disabled=false
+		$AnimPlayer.play("side_closed")
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact") && opened:
-		emit_signal("changing_area")
-		Global.Dawn.set_physics_process(false)
-		yield(get_tree().create_timer(0.8), "timeout")
-		enter_door()
-
-func enter_door():
-	emit_signal("area_changed")
-	get_tree().change_scene(next_room_path)
-	Global.previous_door = self
-	Global.previous_room = get_parent().get_name()
+		emit_signal("changing_area", next_room_path, connected_door)
+	
 
 func _on_FrontDoor_body_entered(body):
-	if body is Player && !opened:
+	if body.name == "Dawn" && !opened:
+		print("Door opening")
 		opened = true
-		$AnimationPlayer.play("open")
+		if DoorType == EDoorType.Front:
+			$AnimPlayer.play("open")
+		else:
+			$AnimPlayer.play("side_open")	
 		$SndOpen.play()
 
 func _on_FrontDoor_body_exited(body):
-	if body is Player && opened:
+	if body.name == "Dawn" && opened:
 		opened = false
-		$AnimationPlayer.play("close")
+		if DoorType == EDoorType.Front:
+			$AnimPlayer.play("close")
+		else:
+			$AnimPlayer.play("side_close")	
 		$SndClose.play()
