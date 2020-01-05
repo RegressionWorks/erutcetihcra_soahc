@@ -2,7 +2,7 @@ extends Node
 class_name Global
 
 var Dawn = null
-var Door
+var Door = null
 
 
 var SceneChanger

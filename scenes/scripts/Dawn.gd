@@ -94,6 +94,7 @@ func push_objects(delta):
 func set_animation():
 	if (is_pushing):
 		if velocity.x == 0:
+			anim_state.travel("push_wait")
 			pass
 		else:
 			anim_state.travel("push")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/scripts/Door.gd" type="Script" id=1]
 [ext_resource path="res://assets/gfx/props/FrontDoor.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/Door Assets/Door open sfx 2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Door Assets/Door close sfx 2.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 15 )
@@ -67,5 +69,11 @@ shape = SubResource( 1 )
 anims/close = SubResource( 2 )
 anims/closed = SubResource( 3 )
 anims/open = SubResource( 4 )
+
+[node name="SndOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="SndClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_FrontDoor_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_FrontDoor_body_exited"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/gfx/props/ClockStand.png" type="Texture" id=1]
+[ext_resource path="res://assets/sfx/clock/Little slow tik tak.ogg" type="AudioStream" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ticktack"
@@ -29,3 +30,9 @@ hframes = 7
 autoplay = "ticktack"
 playback_speed = 0.85
 anims/ticktack = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+max_distance = 500.0
+attenuation = 1.6245
