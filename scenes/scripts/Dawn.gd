@@ -16,22 +16,17 @@ var velocity : Vector2 = Vector2.ZERO
 
 
 func _ready():
-	print("Dawn _ready")
+	print("Player _ready")
 	#show()
 	anim_state = $AnimationTree.get("parameters/playback")
 	$AnimationTree.active = true
 	Global.Dawn = self
 	
-
-#var state_normal():
-#	pass
-
-#var state_push():
-#	pass
-
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		print("Player predelete ", self)
 
 func _physics_process(delta: float) -> void:
-	print("Dawn physic process")
 	get_input()
 	gravity()
 	push_objects(delta)	
@@ -40,8 +35,7 @@ func _physics_process(delta: float) -> void:
 	manage_stairs()
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true, 4, 0.8, false)
 	#motion = move_and_slide(motion,Vector2.UP)
-
-
+	
 func get_input():
 	velocity = Vector2.ZERO
 	

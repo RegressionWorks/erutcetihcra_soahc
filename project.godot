@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://scenes/scripts/Door.gd"
 }, {
 "base": "Node",
-"class": "Global",
-"language": "GDScript",
-"path": "res://scenes/scripts/Global.gd"
-}, {
-"base": "Node",
 "class": "Level",
 "language": "GDScript",
 "path": "res://scenes/scripts/GameState.gd"
@@ -41,7 +36,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Door": "",
-"Global": "",
 "Level": "",
 "Player": "",
 "Pushable": "",

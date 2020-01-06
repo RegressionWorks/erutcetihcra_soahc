@@ -65,7 +65,7 @@ visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Key" parent="." instance=ExtResource( 9 )]
-position = Vector2( 216.275, 119.681 )
+position = Vector2( 213.501, 118.849 )
 
 [node name="Box" parent="." instance=ExtResource( 10 )]
 position = Vector2( 251.679, 180.994 )
@@ -75,4 +75,5 @@ collision_mask = 31
 
 [node name="Door1" parent="." instance=ExtResource( 11 )]
 position = Vector2( 235.836, 127.793 )
-scale = Vector2( 0.8, 0.8 )
+next_room_path = "res://scenes/rooms/LevelHelp2.tscn"
+connected_door = "Door1"

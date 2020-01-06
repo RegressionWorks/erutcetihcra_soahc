@@ -28,6 +28,7 @@ func _set_door_type(value):
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact") && opened:
+		print("Enter door")
 		emit_signal("changing_area", next_room_path, connected_door)
 	
 
