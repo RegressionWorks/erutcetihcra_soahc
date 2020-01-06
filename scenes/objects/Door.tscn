@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/scripts/Door.gd" type="Script" id=1]
+[ext_resource path="res://assets/gfx/props/FrontDoor.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/Door Assets/Door open sfx 2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Door Assets/Door close sfx 2.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 15 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "close"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "closed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "side_close"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "side_closed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "side_open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[node name="Door" type="Area2D"]
+script = ExtResource( 1 )
+next_room_path = "res://scenes/rooms/Debug2.tscn"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.214638, -16.0979 )
+texture = ExtResource( 2 )
+hframes = 14
+
+[node name="CollisionFront" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -15.3032 )
+shape = SubResource( 1 )
+
+[node name="CollisionSide" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 7.74846, -14.7221 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 2 )
+anims/closed = SubResource( 3 )
+anims/open = SubResource( 4 )
+anims/side_close = SubResource( 5 )
+anims/side_closed = SubResource( 6 )
+anims/side_open = SubResource( 7 )
+
+[node name="SndOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="SndClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="body_entered" from="." to="." method="_on_FrontDoor_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_FrontDoor_body_exited"]
