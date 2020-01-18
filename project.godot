@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Chaos Architecture"
-run/main_scene="res://scenes/rooms/LevelHelp2.tscn"
+run/main_scene="res://scenes/Intro.tscn"
 boot_splash/bg_color=Color( 0.0941176, 0.188235, 0.188235, 1 )
 config/icon="res://icon.png"
 
