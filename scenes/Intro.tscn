@@ -13,9 +13,9 @@ script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MenuCanvas"]
 margin_left = 46.037
-margin_top = 20.0374
+margin_top = 34.0
 margin_right = 118.037
-margin_bottom = 104.037
+margin_bottom = 118.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false

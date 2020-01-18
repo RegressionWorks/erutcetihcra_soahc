@@ -21,6 +21,7 @@ func _on_Timer_timeout():
 	
 func _input(event):
 	if event is InputEventKey && ! menu_shown:
+		$Title/AnimationPlayer.seek(24, true)
 		$Timer.wait_time =0.01
 		$Timer.start()
 		
