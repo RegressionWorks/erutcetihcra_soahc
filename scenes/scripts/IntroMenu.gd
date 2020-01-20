@@ -15,7 +15,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	menu_shown = true
-	$Tween.interpolate_property($MenuCanvas/HBoxContainer, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 2.0, Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($MenuCanvas/HBoxContainer, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 	
 	
