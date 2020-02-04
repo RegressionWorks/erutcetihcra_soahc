@@ -22,24 +22,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LblLoadGame" type="Label" parent="MenuCanvas/HBoxContainer"]
+[node name="LblNewgame" type="Label" parent="MenuCanvas/HBoxContainer"]
 margin_right = 72.0
 margin_bottom = 18.0
 focus_neighbour_top = NodePath("../LblQuit")
-focus_neighbour_bottom = NodePath("../LblNewgame")
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-text = "Load game"
-align = 1
-valign = 1
-script = ExtResource( 3 )
-
-[node name="LblNewgame" type="Label" parent="MenuCanvas/HBoxContainer"]
-margin_top = 22.0
-margin_right = 72.0
-margin_bottom = 40.0
-focus_neighbour_top = NodePath("../LblLoadGame")
-focus_neighbour_bottom = NodePath("../LblOptions")
+focus_neighbour_bottom = NodePath("../LblLoadGame")
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "New game"
@@ -47,11 +34,25 @@ align = 1
 valign = 1
 script = ExtResource( 3 )
 
+[node name="LblLoadGame" type="Label" parent="MenuCanvas/HBoxContainer"]
+margin_top = 22.0
+margin_right = 72.0
+margin_bottom = 40.0
+focus_neighbour_top = NodePath("../LblNewgame")
+focus_neighbour_bottom = NodePath("../LblOptions")
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "Load game"
+align = 1
+valign = 1
+script = ExtResource( 3 )
+MenuAction = 1
+
 [node name="LblOptions" type="Label" parent="MenuCanvas/HBoxContainer"]
 margin_top = 44.0
 margin_right = 72.0
 margin_bottom = 62.0
-focus_neighbour_top = NodePath("../LblNewgame")
+focus_neighbour_top = NodePath("../LblLoadGame")
 focus_neighbour_bottom = NodePath("../LblQuit")
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
@@ -59,19 +60,21 @@ text = "Options"
 align = 1
 valign = 1
 script = ExtResource( 3 )
+MenuAction = 2
 
 [node name="LblQuit" type="Label" parent="MenuCanvas/HBoxContainer"]
 margin_top = 66.0
 margin_right = 72.0
 margin_bottom = 84.0
 focus_neighbour_top = NodePath("../LblOptions")
-focus_neighbour_bottom = NodePath("../LblLoadGame")
+focus_neighbour_bottom = NodePath("../LblNewgame")
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "Quit"
 align = 1
 valign = 1
 script = ExtResource( 3 )
+MenuAction = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 24.0

@@ -8,11 +8,6 @@ func _ready():
 	$Timer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_Timer_timeout():
 	menu_shown = true
 	$Tween.interpolate_property($MenuCanvas/HBoxContainer, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -25,3 +20,15 @@ func _input(event):
 		$Timer.wait_time =0.01
 		$Timer.start()
 		
+func OnMenuAction(MenuAction):
+	if !menu_shown:
+		return
+	match MenuAction:
+		MenuLabel.EMenuAction.NewGame:
+			pass
+		MenuLabel.EMenuAction.LoadGame:
+			pass
+		MenuLabel.EMenuAction.Options:
+			pass
+		MenuLabel.EMenuAction.Quit:
+			get_tree().quit()

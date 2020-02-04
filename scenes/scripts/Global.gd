@@ -5,6 +5,8 @@ var Dawn = null
 export var MaxGameTime :float = 100.0 
 var TimeCounter : float
 
+export(PackedScene) var StartingScene 
+
 onready var transitioner = $CanvasLayer/Transition/AnimationPlayer
 
 func _ready():
@@ -17,6 +19,13 @@ func _process(delta):
 		$SndClock.volume_db = linear2db(TimeCounter / MaxGameTime)
 	if (TimeCounter <= 0.0):
 		pass #game over here
+		
+		
+func StartGame():
+	pass
+	
+func ContinueGame():
+	pass
 
 func StartGameClock():
 	TimeCounter = MaxGameTime
