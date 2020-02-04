@@ -3,7 +3,7 @@ extends Node2D
 var menu_shown = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MenuCanvas/HBoxContainer/LblLoadGame.grab_focus()
+	$MenuCanvas/HBoxContainer/LblNewgame.grab_focus()
 	$MenuCanvas/HBoxContainer.modulate.a = 0.0
 	$Timer.start()
 
@@ -25,9 +25,9 @@ func OnMenuAction(MenuAction):
 		return
 	match MenuAction:
 		MenuLabel.EMenuAction.NewGame:
-			pass
+			Global.StartGame()
 		MenuLabel.EMenuAction.LoadGame:
-			pass
+			Global.LoadGame()
 		MenuLabel.EMenuAction.Options:
 			pass
 		MenuLabel.EMenuAction.Quit:

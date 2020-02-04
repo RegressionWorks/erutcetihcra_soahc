@@ -23,7 +23,7 @@ func on_focus_exited():
 	
 	
 func _input(event):
-	if !visible:
+	if !has_focus():
 		return
 	if event.is_action_pressed("ui_accept"):
 		emit_signal("sig_menu_action", MenuAction)

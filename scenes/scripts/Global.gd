@@ -22,9 +22,13 @@ func _process(delta):
 		
 		
 func StartGame():
+	transitioner.play("trans_out")
+	
+	
+	StartGameClock()
 	pass
 	
-func ContinueGame():
+func LoadGame():
 	pass
 
 func StartGameClock():
