@@ -25,10 +25,12 @@ func OnMenuAction(MenuAction):
 		return
 	match MenuAction:
 		MenuLabel.EMenuAction.NewGame:
+			$MenuCanvas/HBoxContainer.visible = false
 			Global.StartGame()
 		MenuLabel.EMenuAction.LoadGame:
+			$MenuCanvas/HBoxContainer.visible = false
 			Global.LoadGame()
 		MenuLabel.EMenuAction.Options:
-			pass
+			$MenuCanvas/HBoxContainer.visible = false
 		MenuLabel.EMenuAction.Quit:
 			get_tree().quit()

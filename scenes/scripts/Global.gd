@@ -11,6 +11,7 @@ onready var transitioner = $CanvasLayer/Transition/AnimationPlayer
 
 func _ready():
 	$CanvasLayer/Transition.show()
+	transitioner.stop()
 	
 func _process(delta):
 	TimeCounter -= delta
@@ -39,7 +40,7 @@ func StartGameClock():
 func _on_changing_area(next_scene, spawn_door_nodepath):
 	print("_on_changing_area")
 	
-	transitioner.play("trans_in")  #animation are inverted, need to fix
+	transitioner.play("trans_out")  #animation are inverted, need to fix
 	#wait for transition to finish
 	yield(get_tree().create_timer(1.0), "timeout")
 	#Dawn.queue_free()
@@ -69,7 +70,7 @@ func _changing_area_phase2(next_scene, spawn_door_nodepath):
 	print("dawn ", Dawn, " Pos ",Dawn.position, " ",Dawn.get_path())
 	print("Door ", next_door, " Pos ", next_door.position," ", next_door.get_path())
 	
-	transitioner.play("trans_out")
+	transitioner.play("trans_in")
 	
 	
 func _debug_infos():
