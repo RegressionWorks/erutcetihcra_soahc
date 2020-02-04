@@ -24,10 +24,25 @@ func _process(delta):
 		
 func StartGame():
 	transitioner.play("trans_out")
+	print("starting game")
+	yield(get_tree().create_timer(1.0), "timeout")
 	
+	get_tree().get_current_scene().free()
 	
+	var StartingScene_inst = StartingScene.instance()
+	get_tree().get_root().add_child(StartingScene_inst)
+	get_tree().set_current_scene(StartingScene_inst)
+	
+	#spawn daw
+	var SpawnNode = StartingScene_inst.get_node("SpawnPlayerPosition")
+	Dawn = load("res://scenes/Dawn.tscn").instance()
+	var DawnFeetPos = Dawn.get_node("Sprite/Ground").position
+	StartingScene_inst.add_child(Dawn)
+	Dawn.position = SpawnNode.position-DawnFeetPos
+	
+	transitioner.play("trans_in")
 	StartGameClock()
-	pass
+
 	
 func LoadGame():
 	pass
