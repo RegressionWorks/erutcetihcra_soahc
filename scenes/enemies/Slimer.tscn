@@ -3,10 +3,10 @@
 [ext_resource path="res://assets/gfx/enemies/Ghost_ground.png" type="Texture" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 4.24779
-height = 10.2681
+radius = 10.8822
+height = 0.507734
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "grab"
 length = 0.7
 tracks/0/type = "value"
@@ -34,8 +34,7 @@ tracks/1/keys = {
 "values": [ 1.2 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "patrol"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -63,8 +62,7 @@ tracks/1/keys = {
 "values": [ 0.75 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "player_chase"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -91,8 +89,7 @@ tracks/1/keys = {
 "values": [ 0.75 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "player_chase2"
+[sub_resource type="Animation" id=5]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -120,8 +117,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "player_detect"
+[sub_resource type="Animation" id=6]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -179,19 +175,20 @@ tracks/1/keys = {
 [node name="Slimer" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -13 )
 texture = ExtResource( 1 )
 hframes = 36
-frame = 35
+frame = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 1.54214, 3.46983 )
+position = Vector2( -0.204133, -6.84149 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/grab = SubResource( 6 )
-anims/patrol = SubResource( 2 )
-anims/player_chase = SubResource( 3 )
-anims/player_chase2 = SubResource( 4 )
-anims/player_detect = SubResource( 5 )
+playback_speed = 1.2
+anims/grab = SubResource( 2 )
+anims/patrol = SubResource( 3 )
+anims/player_chase = SubResource( 4 )
+anims/player_chase2 = SubResource( 5 )
+anims/player_detect = SubResource( 6 )
 anims/void = SubResource( 7 )
