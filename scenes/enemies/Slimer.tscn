@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/gfx/enemies/Ghost_ground.png" type="Texture" id=1]
+[ext_resource path="res://scenes/scripts/Slimer.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 10.8822
-height = 0.507734
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 39.7412, 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "grab"
@@ -172,23 +172,101 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "grab"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "patrol"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "player_chase"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "player_chase2"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "player_detect"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "void"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachine" id=20]
+states/grab/node = SubResource( 8 )
+states/grab/position = Vector2( 786, 201 )
+states/patrol/node = SubResource( 9 )
+states/patrol/position = Vector2( 438, 78 )
+states/player_chase/node = SubResource( 10 )
+states/player_chase/position = Vector2( 1588, 108 )
+states/player_chase2/node = SubResource( 11 )
+states/player_chase2/position = Vector2( 886, 70 )
+states/player_detect/node = SubResource( 12 )
+states/player_detect/position = Vector2( 651, 58 )
+states/void/node = SubResource( 13 )
+states/void/position = Vector2( 438, 190 )
+transitions = [ "patrol", "player_detect", SubResource( 14 ), "player_detect", "player_chase2", SubResource( 15 ), "player_chase2", "grab", SubResource( 16 ), "grab", "player_chase2", SubResource( 17 ), "void", "patrol", SubResource( 18 ), "player_chase2", "void", SubResource( 19 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 9.96955
+height = 10.1594
+
 [node name="Slimer" type="KinematicBody2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -13 )
 texture = ExtResource( 1 )
 hframes = 36
-frame = 28
+frame = 20
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.204133, -6.84149 )
-shape = SubResource( 1 )
+[node name="DetectionArea" type="Area2D" parent="Sprite"]
+position = Vector2( 0, 13 )
+monitorable = false
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/DetectionArea"]
+position = Vector2( -23.8786, -9.93713 )
+shape = SubResource( 22 )
+
+[node name="RayCastFront" type="RayCast2D" parent="Sprite"]
+position = Vector2( -0.043766, 3.01987 )
+enabled = true
+cast_to = Vector2( -10, 0 )
+collision_mask = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.2
 anims/grab = SubResource( 2 )
 anims/patrol = SubResource( 3 )
 anims/player_chase = SubResource( 4 )
 anims/player_chase2 = SubResource( 5 )
 anims/player_detect = SubResource( 6 )
 anims/void = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 20 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.455577, -9.9421 )
+rotation = 1.5708
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Sprite/DetectionArea" to="." method="_on_DetectionArea_body_entered"]
+[connection signal="body_exited" from="Sprite/DetectionArea" to="." method="_on_DetectionArea_body_exited"]

@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "RoomLoader",
 "language": "GDScript",
 "path": "res://scenes/scripts/RoomLoader.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Slimer",
+"language": "GDScript",
+"path": "res://scenes/scripts/Slimer.gd"
 } ]
 _global_script_class_icons={
 "Door": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "MenuLabel": "",
 "Player": "",
 "Pushable": "",
-"RoomLoader": ""
+"RoomLoader": "",
+"Slimer": ""
 }
 
 [application]
@@ -101,6 +107,7 @@ enter_door={
 2d_physics/layer_4="stairs"
 2d_physics/layer_5="pushables"
 2d_physics/layer_6="items"
+2d_physics/layer_7="ennemies"
 
 [rendering]
 

@@ -17,6 +17,7 @@ var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
 	print("Player _ready")
+	add_to_group("Player")
 	#show()
 	anim_state = $AnimationTree.get("parameters/playback")
 	$AnimationTree.active = true
