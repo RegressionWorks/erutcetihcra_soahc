@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/scripts/GameState.gd" type="Script" id=1]
 [ext_resource path="res://scenes/FloorTiles.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/enemies/Slimer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/Door.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 144, -1 )
@@ -18,7 +18,9 @@ tile_data = PoolIntArray( 655348, 2, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="SpawnPlayerPosition" type="Position2D" parent="."]
-position = Vector2( 58.6896, 188.916 )
+position = Vector2( 35.6226, 175.193 )
 
-[node name="Slimer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 161.928, 190.727 )
+[node name="Door" parent="." instance=ExtResource( 3 )]
+position = Vector2( -174.15, 190.435 )
+DoorType = 1
+connected_door = ""
