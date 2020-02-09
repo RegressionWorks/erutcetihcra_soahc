@@ -10,6 +10,9 @@ export(PackedScene) var StartingScene
 onready var transitioner = $CanvasLayer/Transition/AnimationPlayer
 
 func _ready():
+	#instance dawn at the begining now
+	Dawn = load("res://scenes/Dawn.tscn").instance()
+	
 	$CanvasLayer/Transition.show()
 	transitioner.stop()
 	
@@ -34,8 +37,7 @@ func StartGame():
 	get_tree().set_current_scene(StartingScene_inst)
 	
 	#spawn daw
-	var SpawnNode = StartingScene_inst.get_node("SpawnPlayerPosition")
-	Dawn = load("res://scenes/Dawn.tscn").instance()
+	var SpawnNode = StartingScene_inst.get_node("SpawnPlayerPosition")	
 	var DawnFeetPos = Dawn.get_node("Sprite/Ground").position
 	StartingScene_inst.add_child(Dawn)
 	Dawn.position = SpawnNode.position-DawnFeetPos
@@ -66,6 +68,9 @@ func _on_changing_area(next_scene, spawn_door_nodepath):
 		
 func _changing_area_phase2(next_scene, spawn_door_nodepath):
 	print("deferred : _changing_area_phase2")
+	
+	#remove Dawn node from the scene before freeing 
+	get_tree().get_current_scene().remove_child(Dawn)
 	#clean the old scene
 	get_tree().get_current_scene().free()
 
@@ -77,9 +82,7 @@ func _changing_area_phase2(next_scene, spawn_door_nodepath):
 	var scene =  next_scene_inst
 	
 	#spawn the player now that nothing is visible
-	
 	var next_door = scene.get_node(spawn_door_nodepath)
-	Dawn = load("res://scenes/Dawn.tscn").instance()
 	scene.add_child(Dawn)
 	Dawn.position = next_door.position + Vector2(0,-14)
 	print("dawn ", Dawn, " Pos ",Dawn.position, " ",Dawn.get_path())

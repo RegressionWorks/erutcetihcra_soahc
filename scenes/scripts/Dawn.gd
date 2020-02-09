@@ -21,7 +21,6 @@ func _ready():
 	#show()
 	anim_state = $AnimationTree.get("parameters/playback")
 	$AnimationTree.active = true
-	Global.Dawn = self
 	
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
