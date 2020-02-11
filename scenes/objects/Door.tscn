@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+"values": [ 6, 5, 4, 3, 2, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -69,7 +69,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 8, 9, 10, 11, 12, 13 ]
+"values": [ 13, 12, 11, 10, 9, 8, 8 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -112,6 +112,7 @@ next_room_path = "res://scenes/rooms/Debug2.tscn"
 position = Vector2( 0.214638, -16.0979 )
 texture = ExtResource( 2 )
 hframes = 14
+frame = 8
 
 [node name="CollisionFront" type="CollisionShape2D" parent="."]
 visible = false

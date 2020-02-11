@@ -44,6 +44,7 @@ func _on_FrontDoor_body_entered(body):
 
 func _on_FrontDoor_body_exited(body):
 	if body.name == "Dawn" && opened:
+		print("Close door")
 		opened = false
 		if DoorType == EDoorType.Front:
 			$AnimPlayer.play("close")
