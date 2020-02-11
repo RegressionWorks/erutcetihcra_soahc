@@ -10,7 +10,7 @@ extents = Vector2( 9, 15 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "close"
-length = 0.8
+length = 1.24
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -22,6 +22,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SndPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.6 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -42,7 +56,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "open"
-length = 0.8
+length = 1.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -55,10 +69,24 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SndPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "side_close"
-length = 0.8
+length = 1.49
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -69,7 +97,21 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 13, 12, 11, 10, 9, 8, 8 ]
+"values": [ 13, 12, 11, 10, 9, 8, 7 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SndPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.6 )
 }
 
 [sub_resource type="Animation" id=6]
@@ -90,7 +132,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "side_open"
-length = 0.8
+length = 1.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -103,6 +145,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 7, 8, 9, 10, 11, 12, 13 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SndPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="Door" type="Area2D"]
 script = ExtResource( 1 )
@@ -112,7 +168,6 @@ next_room_path = "res://scenes/rooms/Debug2.tscn"
 position = Vector2( 0.214638, -16.0979 )
 texture = ExtResource( 2 )
 hframes = 14
-frame = 8
 
 [node name="CollisionFront" type="CollisionShape2D" parent="."]
 visible = false
@@ -133,10 +188,7 @@ anims/side_close = SubResource( 5 )
 anims/side_closed = SubResource( 6 )
 anims/side_open = SubResource( 7 )
 
-[node name="SndOpen" type="AudioStreamPlayer" parent="."]
+[node name="SndPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-
-[node name="SndClose" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_FrontDoor_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_FrontDoor_body_exited"]

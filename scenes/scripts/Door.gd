@@ -40,7 +40,6 @@ func _on_FrontDoor_body_entered(body):
 			$AnimPlayer.play("open")
 		else:
 			$AnimPlayer.play("side_open")	
-		$SndOpen.play()
 
 func _on_FrontDoor_body_exited(body):
 	if body.name == "Dawn" && opened:
@@ -50,4 +49,3 @@ func _on_FrontDoor_body_exited(body):
 			$AnimPlayer.play("close")
 		else:
 			$AnimPlayer.play("side_close")	
-		$SndClose.play()
