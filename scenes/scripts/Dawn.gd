@@ -4,7 +4,7 @@ class_name Player
 
 var anim_tree
 var walk_speed : float = 30.0
-var run_speed : float = 40.0
+var run_speed : float = 56.0
 var push_speed : float = 20.0
 var gravity : float = 80.0
 var is_pushing : bool = false
@@ -121,6 +121,8 @@ func set_animation():
 			anim_tree.travel("idle")
 		else:
 			anim_tree.travel("walk")
+		if velocity.x != 0 and Input.is_action_pressed("run"):
+			anim_tree.travel("run")
 	
 func get_dawn_direction() -> float:
 	return $Sprite.scale.x
