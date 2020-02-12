@@ -75,6 +75,5 @@ collision_mask = 31
 
 [node name="Door1" parent="." instance=ExtResource( 11 )]
 position = Vector2( 235.836, 127.793 )
-DoorType = 0
 next_room_path = "res://scenes/rooms/LevelHelp2.tscn"
 connected_door = "Door1"

@@ -11,7 +11,10 @@ collision_layer = 32
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -6.04595 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.0944672, -6.61275 )
 shape = SubResource( 1 )

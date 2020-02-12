@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/scripts/Dawn.gd" type="Script" id=1]
 [ext_resource path="res://assets/gfx/player/DawnSprite.png" type="Texture" id=2]
@@ -342,6 +342,15 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "climb_end"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "climb_loop"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "climb_startup"
+
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "idle"
 
@@ -378,7 +387,25 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachine" id=28]
+states/climb_end/node = SubResource( 30 )
+states/climb_end/position = Vector2( 826, 302 )
+states/climb_loop/node = SubResource( 31 )
+states/climb_loop/position = Vector2( 628, 302 )
+states/climb_startup/node = SubResource( 32 )
+states/climb_startup/position = Vector2( 417, 302 )
 states/idle/node = SubResource( 14 )
 states/idle/position = Vector2( 463.677, 102.417 )
 states/push/node = SubResource( 15 )
@@ -391,7 +418,7 @@ states/push_wait/node = SubResource( 18 )
 states/push_wait/position = Vector2( 372, -63 )
 states/walk/node = SubResource( 19 )
 states/walk/position = Vector2( 991.286, 115.99 )
-transitions = [ "idle", "walk", SubResource( 20 ), "walk", "idle", SubResource( 21 ), "idle", "push_start", SubResource( 22 ), "push", "push_end", SubResource( 23 ), "push_end", "idle", SubResource( 24 ), "push_start", "push_wait", SubResource( 25 ), "push_wait", "push", SubResource( 26 ), "push", "push_wait", SubResource( 27 ) ]
+transitions = [ "idle", "walk", SubResource( 20 ), "walk", "idle", SubResource( 21 ), "idle", "push_start", SubResource( 22 ), "push", "push_end", SubResource( 23 ), "push_end", "idle", SubResource( 24 ), "push_start", "push_wait", SubResource( 25 ), "push_wait", "push", SubResource( 26 ), "push", "push_wait", SubResource( 27 ), "idle", "climb_startup", SubResource( 33 ), "climb_startup", "climb_loop", SubResource( 34 ), "climb_loop", "climb_end", SubResource( 35 ), "climb_end", "idle", SubResource( 36 ) ]
 start_node = "idle"
 graph_offset = Vector2( -185, -111 )
 

@@ -2,6 +2,7 @@ extends Node
 #class_name Global
 
 var Dawn = null
+var DawnFeetPos = Vector2(0,14)
 export var MaxGameTime :float = 100.0 
 var TimeCounter : float
 
@@ -12,7 +13,7 @@ onready var transitioner = $CanvasLayer/Transition/AnimationPlayer
 func _ready():
 	#instance dawn at the begining now
 	Dawn = load("res://scenes/Dawn.tscn").instance()
-	
+	DawnFeetPos = Dawn.get_node("Sprite/Ground").position
 	$CanvasLayer/Transition.show()
 	transitioner.stop()
 	
@@ -38,7 +39,7 @@ func StartGame():
 	
 	#spawn daw
 	var SpawnNode = StartingScene_inst.get_node("SpawnPlayerPosition")	
-	var DawnFeetPos = Dawn.get_node("Sprite/Ground").position
+	
 	StartingScene_inst.add_child(Dawn)
 	Dawn.position = SpawnNode.position-DawnFeetPos
 	
@@ -84,7 +85,7 @@ func _changing_area_phase2(next_scene, spawn_door_nodepath):
 	#spawn the player now that nothing is visible
 	var next_door = scene.get_node(spawn_door_nodepath)
 	scene.add_child(Dawn)
-	Dawn.position = next_door.position + Vector2(0,-14)
+	Dawn.position = next_door.position - DawnFeetPos
 	print("dawn ", Dawn, " Pos ",Dawn.position, " ",Dawn.get_path())
 	print("Door ", next_door, " Pos ", next_door.position," ", next_door.get_path())
 	

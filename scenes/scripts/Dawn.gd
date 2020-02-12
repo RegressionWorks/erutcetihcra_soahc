@@ -2,30 +2,37 @@ extends KinematicBody2D
 class_name Player
 
 
-var anim_state
+var anim_tree
 var walk_speed : float = 30.0
 var run_speed : float = 40.0
 var push_speed : float = 20.0
 var gravity : float = 80.0
 var is_pushing : bool = false
-var pushing_offset :float = 0.0
+var is_climbing : bool = false
+var climbing_height : float = 16.0
+var is_blocked : bool = false
+var pushing_offset :float = -18.0
 var on_stairs : bool = false
 var stairs_in_front : bool = false
 var want_to_go_on_stairs : bool = false
 var velocity : Vector2 = Vector2.ZERO
 
+enum EDawnState{
+	Idle,
+	Moving, #walking or running
+	Pushing,
+	Climbing,
+}
+
+var DawnState = EDawnState.Idle
 
 func _ready():
 	print("Player _ready")
 	add_to_group("Player")
 	#show()
-	anim_state = $AnimationTree.get("parameters/playback")
+	anim_tree = $AnimationTree.get("parameters/playback")
 	$AnimationTree.active = true
 	
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		print("Player predelete ", self)
-
 func _physics_process(delta: float) -> void:
 	get_input()
 	gravity()
@@ -33,20 +40,35 @@ func _physics_process(delta: float) -> void:
 	set_animation()
 	set_sprite_direction()
 	manage_stairs()
-	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true, 4, 0.8, false)
-	#motion = move_and_slide(motion,Vector2.UP)
+	if !is_blocked:
+		velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true, 4, 0.8, false)
 	
 func get_input():
 	velocity = Vector2.ZERO
 	
+	#check for climbing
+	if !is_climbing && Input.is_action_pressed("ui_up") && $Sprite/PushableRay.is_colliding():
+		is_climbing = true
+		global_position.x = $Sprite/PushableRay.get_collider().global_position.x + pushing_offset * get_dawn_direction()
+		anim_tree.travel("climb_startup")
+		print("Climbing start")
+		return
+	if is_climbing && Input.is_action_pressed("ui_up") && anim_tree.get_current_node() == "climb_loop":
+		anim_tree.travel("climb_end")
+		print("Climbing end")
+		return
+	if is_climbing && anim_tree.get_current_node() == "idle":
+		global_position.x-=pushing_offset
+		global_position.y-=16
+		is_climbing = false
+		print("Climbing finished")
 	#check for pushable
-	if Input.is_action_pressed("interact") && $Sprite/PushableRay.is_colliding() && !is_pushing:
+	if !is_climbing && !is_pushing && Input.is_action_pressed("interact") && $Sprite/PushableRay.is_colliding():
 		is_pushing = true
-		pushing_offset=global_position.x-$Sprite/PushableRay.get_collider().global_position.x
-		print(pushing_offset)
-		anim_state.travel("push_wait")
-	#print("interact ",Input.is_action_pressed("interact"), " Collide ", $Sprite/PushableRay.is_colliding())
-	if (Input.is_action_just_released("interact") && is_pushing)  || $Sprite/PushableRay.get_collider() == null:
+		global_position.x = $Sprite/PushableRay.get_collider().global_position.x + pushing_offset * get_dawn_direction()
+		anim_tree.travel("push_wait")
+
+	if (is_pushing && Input.is_action_just_released("interact"))  || $Sprite/PushableRay.get_collider() == null:
 		is_pushing = false
 	
 	if Input.is_action_pressed("ui_right"):# && is_on_floor():
@@ -56,8 +78,7 @@ func get_input():
 		
 	if is_pushing:	
 		velocity = velocity.normalized() * walk_speed * 0.5
-		$Sprite/PushableRay.get_collider().global_position.x = global_position.x - pushing_offset
-		#$Sprite/PushableRay.get_collider().linear_velocity.x=velocity.x
+		$Sprite/PushableRay.get_collider().global_position.x = global_position.x - pushing_offset * get_dawn_direction()
 	else:
 		want_to_go_on_stairs = Input.is_action_pressed("ui_up") && is_on_floor()
 	
@@ -88,21 +109,24 @@ func push_objects(delta):
 
 
 func set_animation():
+	if is_climbing:
+		return
 	if (is_pushing):
 		if velocity.x == 0:
-			anim_state.travel("push_wait")
-			pass
+			anim_tree.travel("push_wait")
 		else:
-			anim_state.travel("push")
+			anim_tree.travel("push")
 	else:
 		if velocity.x == 0:
-			anim_state.travel("idle")
+			anim_tree.travel("idle")
 		else:
-			anim_state.travel("walk")
+			anim_tree.travel("walk")
 	
-
+func get_dawn_direction() -> float:
+	return $Sprite.scale.x
+	
 func set_sprite_direction():
-	if !is_pushing:
+	if !is_pushing && ! is_climbing:
 		if velocity.x <= -1:
 			$Sprite.scale.x = -1
 		elif velocity.x >= 1:

@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/gfx/props/WoodenBox.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.09419, 8.06818 )
 
 [node name="Box" type="RigidBody2D"]
 collision_layer = 16
@@ -15,5 +16,3 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-hframes = 2
-frame = 1

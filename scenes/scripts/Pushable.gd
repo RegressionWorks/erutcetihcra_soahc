@@ -1,5 +1,5 @@
 extends RigidBody2D
-class_name Pushable
+class_name Pushable, "res://assets/gfx/props/WoodenBox.png"
 
 var velocity : Vector2 = Vector2.ZERO
 var gravity : float = 80

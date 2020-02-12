@@ -49,7 +49,7 @@ _global_script_class_icons={
 "Level": "",
 "MenuLabel": "",
 "Player": "",
-"Pushable": "",
+"Pushable": "res://assets/gfx/props/WoodenBox.png",
 "RoomLoader": "",
 "Slimer": ""
 }
