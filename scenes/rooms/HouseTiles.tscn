@@ -32,34 +32,34 @@ extents = Vector2( 8, 8 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=21]
@@ -219,7 +219,7 @@ region_rect = Rect2( 16, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor1/StaticBody2D"]
-shape = SubResource( 16 )
+shape = SubResource( 11 )
 
 [node name="Floor2" type="Sprite" parent="."]
 position = Vector2( 33, 106 )
@@ -230,7 +230,7 @@ region_rect = Rect2( 32, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/StaticBody2D"]
-shape = SubResource( 15 )
+shape = SubResource( 12 )
 
 [node name="Floor3" type="Sprite" parent="."]
 position = Vector2( 52, 109 )
@@ -241,7 +241,7 @@ region_rect = Rect2( 48, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3/StaticBody2D"]
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
 [node name="Floor4" type="Sprite" parent="."]
 position = Vector2( 70, 107 )
@@ -252,7 +252,7 @@ region_rect = Rect2( 64, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4/StaticBody2D"]
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Floor5" type="Sprite" parent="."]
 position = Vector2( 88, 105 )
@@ -263,7 +263,7 @@ region_rect = Rect2( 80, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor5/StaticBody2D"]
-shape = SubResource( 12 )
+shape = SubResource( 15 )
 
 [node name="Floor6" type="Sprite" parent="."]
 position = Vector2( 110, 104 )
@@ -274,7 +274,7 @@ region_rect = Rect2( 96, 80, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor6/StaticBody2D"]
-shape = SubResource( 11 )
+shape = SubResource( 16 )
 
 [node name="CornerDownLeft" type="Sprite" parent="."]
 position = Vector2( 8, 88 )
@@ -291,7 +291,7 @@ region_rect = Rect2( 0, 16, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="WallLeft1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft1/StaticBody2D"]
-shape = SubResource( 20 )
+shape = SubResource( 17 )
 
 [node name="WallLeft2" type="Sprite" parent="."]
 position = Vector2( 8, 40 )
@@ -302,7 +302,7 @@ region_rect = Rect2( 0, 32, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="WallLeft2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft2/StaticBody2D"]
-shape = SubResource( 19 )
+shape = SubResource( 18 )
 
 [node name="WallLeft3" type="Sprite" parent="."]
 position = Vector2( 8, 56 )
@@ -313,7 +313,7 @@ region_rect = Rect2( 0, 48, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="WallLeft3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft3/StaticBody2D"]
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="WallLeft4" type="Sprite" parent="."]
 position = Vector2( 8, 72 )
@@ -324,7 +324,7 @@ region_rect = Rect2( 0, 64, 16, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="WallLeft4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft4/StaticBody2D"]
-shape = SubResource( 17 )
+shape = SubResource( 20 )
 
 [node name="Ledge" type="Sprite" parent="."]
 position = Vector2( 144, 7 )
